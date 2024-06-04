@@ -51,8 +51,8 @@ public class TravellerController {
         return travellerService.fetchAllCard();
     }
 
-    @PostMapping(value = "/staitions")
-    public Set<Station> getStaitions(){
+    @PostMapping(value = "/stations")
+    public Set<Station> getStations(){
         return TravelCardSystemApplication.getStations();
     }
 

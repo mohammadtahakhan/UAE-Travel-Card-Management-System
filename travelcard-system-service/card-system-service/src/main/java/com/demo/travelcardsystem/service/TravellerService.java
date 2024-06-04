@@ -26,14 +26,14 @@ public class TravellerService {
     /**
      * This method register new user/card in the system
      *
-     * @param cardRegistrationRequest
+     * @param cardRegistrationRequest has cardNumber and balance
      */
     public void registerNewCard(CardRegistrationRequest cardRegistrationRequest) {
         if(cardRegistrationRequest == null || cardRegistrationRequest.getCardNumber() == null || cardRegistrationRequest.getCardNumber().isEmpty()) {
             throw new InvalidCardException("This card is Invalid. Please use a valid card");
         }
 
-        if(cardRegistrationRequest != null && cardRegistrationRequest.getBalance() < 0 ) {
+        if(cardRegistrationRequest.getBalance() < 0 ) {
             throw new InvalidRechargeAmount("Recharge amount must not be negative");
         }
 
@@ -47,8 +47,8 @@ public class TravellerService {
     /**
      * This method is to recharge existing card. Otherwise, InvalidCardException is thrown
      *
-     * @param cardNumber
-     * @param rechargeAmount
+     * @param cardNumber gives you the cardNumber
+     * @param rechargeAmount recharge the amount of money
      */
     public void rechargeTheCard(String cardNumber, double rechargeAmount) {
         if(cardNumber == null || cardNumber.isEmpty()) {

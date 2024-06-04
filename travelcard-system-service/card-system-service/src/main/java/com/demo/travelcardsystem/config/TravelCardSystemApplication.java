@@ -10,15 +10,18 @@ import com.demo.travelcardsystem.repository.InMemoryCardTransactionRepository;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+
+import lombok.Getter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication(scanBasePackages = {"com.demo.travelcardsystem"})
-public class TravelcardsystemApplication{
-
+public class TravelCardSystemApplication {
+    @Getter
+    private static Set<Station> stations;
     public static void main(String[] args) {
-        SpringApplication.run(TravelcardsystemApplication.class, args);
+        SpringApplication.run(TravelCardSystemApplication.class, args);
     }
 
     @Bean
@@ -35,7 +38,8 @@ public class TravelcardsystemApplication{
 
     @Bean
     public Boolean loadAllStation(InMemoryCardTransactionRepository inMemoryCardTransactionRepository) {
-        Set<Station> stations = new HashSet<>();
+
+        stations = new HashSet<>();
 
         //ADD Algubaiba
         stations.add(new Station("Algubaiba", new HashSet<>(Arrays.asList(Zone.ONE))));

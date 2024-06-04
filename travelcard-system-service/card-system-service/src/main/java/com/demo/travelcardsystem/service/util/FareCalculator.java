@@ -35,12 +35,12 @@ public class FareCalculator {
         Predicate<Rule> rulePredicate = rule -> rule.isRuleSatisfied(journey);
 
         // Figure out which rule will be applicable out of all provided business rules
+
         Rule applicableRule = travelStrategy.getRuleCollection().getRules()
                 .stream()
                 .filter(rulePredicate)
                 .min(ruleComparator)
-                .get();
-
+                .orElseThrow(() -> new RuntimeException("No applicable rule found"));
         //finally, return the chargeable fare
         return applicableRule.getChargeableFare();
     }

@@ -19,7 +19,7 @@ public class TravelStrategy {
     @NonNull
     private RuleCollection ruleCollection;
 
-    public Consumer<Double> anyWhereInZoneOneStrategy = chargeableAmount -> {
+    protected Consumer<Double> anyWhereInZoneOneStrategy = chargeableAmount -> {
         Rule rule = new Rule();
         rule.setChargeableFare(chargeableAmount);
 
@@ -31,7 +31,7 @@ public class TravelStrategy {
 
     };
 
-    public Consumer<Double> anyOneZoneOutsideZoneOneStrategy = chargeableAmount -> {
+    protected Consumer<Double> anyOneZoneOutsideZoneOneStrategy = chargeableAmount -> {
         Rule rule = new Rule();
         rule.setChargeableFare(chargeableAmount);
 
@@ -42,7 +42,7 @@ public class TravelStrategy {
         ruleCollection.addRules(rule);
     };
 
-    public Consumer<Double> anyTwoZoneIncludingZoneOneStrategy = chargeableAmount -> {
+    protected Consumer<Double> anyTwoZoneIncludingZoneOneStrategy = chargeableAmount -> {
         Rule rule = new Rule();
         rule.setChargeableFare(chargeableAmount);
 
@@ -55,7 +55,7 @@ public class TravelStrategy {
         ruleCollection.addRules(rule);
     };
 
-    public  Consumer<Double> anyTwoZoneExcludingZoneOneStrategy = chargeableAmount -> {
+    protected  Consumer<Double> anyTwoZoneExcludingZoneOneStrategy = chargeableAmount -> {
         Rule rule = new Rule();
         rule.setChargeableFare(chargeableAmount);
 
@@ -66,7 +66,7 @@ public class TravelStrategy {
         ruleCollection.addRules(rule);
     };
 
-    public Consumer<Double> anyThreeZoneStrategy = chargeableAmount -> {
+    protected Consumer<Double> anyThreeZoneStrategy = chargeableAmount -> {
         Rule rule = new Rule();
         rule.setChargeableFare(chargeableAmount);
 
@@ -75,7 +75,7 @@ public class TravelStrategy {
         ruleCollection.addRules(rule);
     };
 
-    public BiConsumer<Double, TransportType> anyJourneyByBus = (chargeableAmount, transType) -> {
+    protected BiConsumer<Double, TransportType> anyJourneyByBus = (chargeableAmount, transType) -> {
         Rule rule = new Rule();
         rule.setChargeableFare(chargeableAmount);
         rule.setTransportType(transType);
